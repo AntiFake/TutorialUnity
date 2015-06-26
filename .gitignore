@@ -13,9 +13,26 @@
 *.userprefs
 *.pidb
 *.booproj
+*.sqlsuo
+*_ReSharper.*
+*.log
+obj/
+bin/
+Library/
+Temp/
+*.orig
+Assembly-CSharp*.csproj
+Assembly-UnityScript*.unityproj
+.DS_Store
 
+*.subnet
+source/POC/SubnetPOC/SubnetPOC-csharp.sln
+source/POC/SubnetPOC/SubnetPOC.sln
 # Unity3D generated meta files
 *.pidb.meta
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+
+
