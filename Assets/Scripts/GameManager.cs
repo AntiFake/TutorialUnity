@@ -6,12 +6,18 @@ public class GameManager : MonoBehaviour
 {
     private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
     private int level = 3;                                  //Current level number, expressed in game as "Day 1".
+    public static GameManager instance;
 
     //Awake is always called before any Start functions
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else if (instance != null)
+            Destroy(instance);
+
+        DontDestroyOnLoad(instance);
         boardScript = GetComponent<BoardManager>();
-        Debug.Log(GetComponent<BoardManager>() == null ? "1" : "2");
         InitGame();
     }
 
