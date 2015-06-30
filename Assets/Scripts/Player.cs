@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MovingObject
 {
@@ -7,6 +8,7 @@ public class Player : MovingObject
     public int pointsForFood = 10;
     public int pointsForSoda = 20;
     public float restartLevelDelay = 1f;
+    public Text foodText;
 
     private Animator animator;
     private int food;
@@ -16,6 +18,7 @@ public class Player : MovingObject
     {
         animator = GetComponent<Animator>();
         food = GameManager.instance.playerFoodPoints;
+        foodText.text = "Food: " + food;
         base.Start();
     }
 
@@ -60,7 +63,7 @@ public class Player : MovingObject
             AttemptMove<Wall>(horizontal, vertical);
     }
 
-    protected override void OnCanMove<T>(T component)
+    protected override void OnCantMove<T>(T component)
     {
         Wall hitWall = component as Wall;
         hitWall.DamageWall(wallDamage);
@@ -76,6 +79,7 @@ public class Player : MovingObject
     {
         animator.SetTrigger("playerHit");
         food -= loss;
+        foodText.text = "Food: " + food;
         CheckIfGameOver();
     }
 
@@ -89,11 +93,13 @@ public class Player : MovingObject
         if (collider.tag == "Food")
         {
             food += pointsForFood;
+            foodText.text = "Food: " + food;
             collider.gameObject.SetActive(false);
         }
         if (collider.tag == "Soda")
         {
             food += pointsForSoda;
+            foodText.text = "Food: " + food;
             collider.gameObject.SetActive(false);
         }
     }

@@ -20,7 +20,8 @@ public abstract class MovingObject : MonoBehaviour {
         Vector2 end = start + new Vector2(xDir, yDir);
         this.boxCollider.enabled = false;
         hit = Physics2D.Linecast(start, end, this.blockingLayer);
-
+        this.boxCollider.enabled = true;
+        
         if (hit.transform == null) 
         {
             StartCoroutine(SmoothMovement(end));
@@ -42,7 +43,8 @@ public abstract class MovingObject : MonoBehaviour {
         }
     }
 
-    protected virtual void AttemptMove<T>(int xDir, int yDir) where T : Component
+    protected virtual void AttemptMove<T>(int xDir, int yDir) 
+        where T : Component
     {
         RaycastHit2D hit;
         bool canMove = Move(xDir, yDir, out hit);
@@ -52,8 +54,9 @@ public abstract class MovingObject : MonoBehaviour {
 
         T hitComponent = hit.transform.GetComponent<T>();
         if (!canMove && hitComponent != null)
-            OnCanMove(hitComponent);
+            OnCantMove(hitComponent);
     }
 
-    protected abstract void OnCanMove<T>(T component) where T : Component;
+    protected abstract void OnCantMove<T>(T component) 
+        where T : Component;
 }
