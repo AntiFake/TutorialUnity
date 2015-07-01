@@ -8,6 +8,9 @@ public class Enemy : MovingObject {
     private Animator animator;
     private Transform target;
     private bool skipMove;
+    public AudioClip attack1;
+    public AudioClip attack2;
+
     protected override void Start() 
     {
         GameManager.instance.AddEnemyToList(this);
@@ -46,5 +49,6 @@ public class Enemy : MovingObject {
         Player hitPlayer = component as Player;
         hitPlayer.LoseFood(playerDamage);
         animator.SetTrigger("enemyAttack");
+        SoundManager.instance.RandomizeSfx(attack1, attack2);
     }
 }

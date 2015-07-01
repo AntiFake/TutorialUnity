@@ -94,6 +94,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   playerDamage: 10
+  attack1: {fileID: 8300000, guid: 0db8cac2749584a009540aa5671ee80d, type: 3}
+  attack2: {fileID: 8300000, guid: 114514a3b3697484ebaa08f7fbf842d3, type: 3}
 --- !u!212 &21294132
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -135,6 +137,14 @@ Prefab:
       propertyPath: playerDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attack1
+      value: 
+      objectReference: {fileID: 8300000, guid: 0db8cac2749584a009540aa5671ee80d, type: 3}
+    - target: {fileID: 0}
+      propertyPath: attack2
+      value: 
+      objectReference: {fileID: 8300000, guid: 114514a3b3697484ebaa08f7fbf842d3, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106216}
